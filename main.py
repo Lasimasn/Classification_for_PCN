@@ -36,10 +36,6 @@ model=pickle.load(open('lrtfidf19.pkl','rb'))
 #model = tf.saved_model.load(mobilenet_save_path)
 st.title("Primary Care Network")
 
-st.write("""
-         Book an appointment
-         """)
-
 #code for adding to database
 def addData(a,b,c,d):
     curr.execute("""CREATE TABLE IF NOT EXISTS nhs_form(NAME TEXT(50),DISEASE TEXT(50), EMAIL TEXT(50),DEPT TEXT(50));""")
@@ -101,6 +97,15 @@ def send_appointment_confirmation(answer,email,appt_time,app_end):
     server.sendmail(
         'nhs.fortest@gmail.com', email, msg
     )
+
+
+st.header("""
+                     Book an appointment
+
+                     """)
+st.subheader(
+    " Let's help you quickly get the best care!\nBy answering a few questions, we can better understand your symptoms and redirect you to the appropriate physician.\n"
+    "Important: If you think you or someone call 999 or visit a nearest emergency department.")
 
 Name = st.text_input("Full Name")
 page_names= ["Book a GP appointment or get health advice", "Get help with Mental Health"]
